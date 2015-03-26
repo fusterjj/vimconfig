@@ -209,6 +209,12 @@ function! fugitive#detect(path) abort
         call buffer.setvar('&tags', escape(b:git_dir.'/'.&filetype.'.tags', ', ').','.buffer.getvar('&tags'))
       endif
     endif
+    if has("cscope")
+      let b:cscopefile = b:git_dir.'/cscope.out'
+      if filereadable(b:cscopefile)
+        execute 'cs add' b:cscopefile
+      endif
+    endif
     try
       let [save_mls, &modelines] = [&mls, 0]
       doautocmd User Fugitive
