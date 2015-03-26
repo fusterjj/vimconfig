@@ -1,0 +1,13 @@
+if has('win32') || has ('win64')
+   let $VIMFILES="~/vimfiles"
+else
+   let $VIMFILES="~/.vim"
+endif
+source $VIMFILES/vimrc-common
+
+" if needed
+"set tags=c:\Project_files\cscope\x300\tags
+"cs add c:\Project_files\cscope\x300\cscope.out
+
+
+call pathogen#infect()

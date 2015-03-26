@@ -1,4 +1,0 @@
-let $MYVIMRC="~/.vim/vimrc-common"
-source $MYVIMRC
-
-call pathogen#infect()
