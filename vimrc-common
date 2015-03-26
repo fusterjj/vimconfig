@@ -1,0 +1,59 @@
+" faster searching
+set hlsearch
+set incsearch
+" One True Indenting
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set autoindent
+set smartindent
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set formatoptions+=j
+" show bracket matches
+set showmatch
+" all lines should be numbered
+set number
+
+set ssop-=options " do not store global and local values in a session
+set ssop-=folds " do not store folds
+
+" cursed Makeefiles need tabs
+autocmd BufRead,BufNewFile Makefile set noexpandtab
+autocmd BufRead,BufNewFile makefile set noexpandtab
+autocmd BufRead,BufNewFile makefile.subsys set noexpandtab
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+"set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B]
+set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=%{fugitive#statusline()}\ %8l,%c%V/%L\ (%P)
+" always show status line
+set laststatus=2
+" allow processing of modelines within files
+set modeline
+set showcmd
+" wildcard completion menu
+set wildmenu
+" show context when at bottom of screen
+set scrolloff=1
+set ofu=syntaxcomplete#Complete
+filetype plugin on
+filetype indent on
+syntax on
+
+"highlight Normal guibg=black
+set background=dark
+"These should only apply to gvim
+if has('gui_running')
+    colorscheme darkblue
+endif
+
