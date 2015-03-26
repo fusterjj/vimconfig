@@ -1,0 +1,2 @@
+#!/bin/sh
+.git/hooks/update_tags.sh > /dev/null 2>&1 &
