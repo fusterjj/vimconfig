@@ -1,3 +1,4 @@
+
 " faster searching
 set hlsearch
 set incsearch
@@ -8,6 +9,7 @@ set tabstop=4
 set expandtab
 set autoindent
 set smartindent
+" Show more characters for 'set list'
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set formatoptions+=j
 " show bracket matches
@@ -22,6 +24,7 @@ set ssop-=folds " do not store folds
 autocmd BufRead,BufNewFile Makefile set noexpandtab
 autocmd BufRead,BufNewFile makefile set noexpandtab
 autocmd BufRead,BufNewFile makefile.subsys set noexpandtab
+autocmd BufRead,BufNewFile *.ppc set filetype=asm
 
 " vim -b : edit binary using xxd-format!
 augroup Binary
@@ -49,6 +52,13 @@ set ofu=syntaxcomplete#Complete
 filetype plugin on
 filetype indent on
 syntax on
+
+"cscope
+source $VIMFILES/plugin/cscope_maps.vim
+set csqf=s-,g-,d-,c-,t-,e-,f-,i-
+" don't moan everytime we load a DB or try to load a duplicate DB
+set nocscopeverbose
+set cscopetag
 
 "highlight Normal guibg=black
 set background=dark
