@@ -11,6 +11,7 @@ set autoindent
 set smartindent
 " Show more characters for 'set list'
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" Delete comment character when joining commented lines
 set formatoptions+=j
 " show bracket matches
 set showmatch
@@ -65,5 +66,7 @@ set background=dark
 "These should only apply to gvim
 if has('gui_running')
     colorscheme darkblue
+    set guioptions-=T
+    set guioptions-=m
 endif
 
